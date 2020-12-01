@@ -19,4 +19,8 @@ const Toolbar = ({ onAdd }) => {
   );
 };
 
+Toolbar.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+};
+
 export default Toolbar;
