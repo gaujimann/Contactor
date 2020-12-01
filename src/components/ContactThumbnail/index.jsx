@@ -5,8 +5,13 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-const ContactThumbnail = ({ name, photo }) => (
-  <TouchableOpacity activateOpacity={0.8}>
+const ContactThumbnail = ({
+  navigation, id, name, photo,
+}) => (
+  <TouchableOpacity
+    activateOpacity={0.8}
+    onPress={() => navigation.navigate('ContactDetails', { id, name })}
+  >
     <View style={styles.contact}>
       <Image style={styles.contactPhoto} source={{ uri: photo }} />
       <Text style={styles.contactText}>{name}</Text>
@@ -17,6 +22,9 @@ const ContactThumbnail = ({ name, photo }) => (
 ContactThumbnail.propTypes = {
   name: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default ContactThumbnail;

@@ -48,6 +48,9 @@ ContactList.propTypes = {
       ),
     }),
   ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (reduxStoreState) => {
