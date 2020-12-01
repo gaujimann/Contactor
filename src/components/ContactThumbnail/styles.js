@@ -8,9 +8,6 @@ export default StyleSheet.create({
     padding: 8,
     marginRight: 16,
     marginLeft: 16,
-    borderStyle: 'solid',
-    borderBottomColor: 'white',
-    borderBottomWidth: 0.3,
   },
   contactPhoto: {
     width: 50,
