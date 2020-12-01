@@ -23,7 +23,7 @@ export const addContact = async (contactLocation) => {
 };
 
 const setupDirectory = async () => {
-  const dir = await FileSystem.degInfoAsync(contactDirectory);
+  const dir = await FileSystem.getInfoAsync(contactDirectory);
   if (!dir.exists) {
     await FileSystem.makeDirectoryAsync(contactDirectory);
   }

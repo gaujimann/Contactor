@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 
 const Modal = ({
- isOpen, closeModal, title, children
+  isOpen, closeModal, title, children,
 }) => (
   <NativeModal
     isVisible={isOpen}
@@ -16,8 +16,8 @@ const Modal = ({
     style={styles.modal}
   >
     <View style={styles.body}>
-      <Text>{ title }</Text>
-      { children }
+      <Text>{title}</Text>
+      {children}
     </View>
   </NativeModal>
 );

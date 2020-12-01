@@ -7,7 +7,7 @@ import Toolbar from '../../components/Toolbar';
 const ContactDetails = ({ contact, dispatch }) => (
   <View>
     <Toolbar />
-    <Text style={{ color: 'white' }}>{contact.name}</Text>
+    <Text>{contact.name}</Text>
   </View>
 );
 
