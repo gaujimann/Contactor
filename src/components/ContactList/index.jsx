@@ -37,10 +37,8 @@ ContactList.propTypes = {
   ).isRequired,
 };
 
-const mapStateToProps = (reduxStoreState) => {
-  return {
-    contact: reduxStoreState,
-  };
-};
+const mapStateToProps = (reduxStoreState) => ({
+  contacts: [{ title: 'dummy', data: reduxStoreState }],
+});
 
 export default connect(mapStateToProps)(ContactList);

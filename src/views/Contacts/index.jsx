@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
 
-const Contacts = ({ contacts, dispatch }) => {
+const Contacts = ({ dispatch }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <View style={{ flex: 1 }}>
       <Toolbar onAdd={() => setIsAddModalOpen(true)} />
-      <ContactList contacts={contacts} />
+      <ContactList />
       <AddModal
         isOpen={isAddModalOpen}
         closeModal={() => setIsAddModalOpen(false)}
@@ -28,8 +29,8 @@ const Contacts = ({ contacts, dispatch }) => {
   );
 };
 
-const mapStateToProps = (reduxStoreState) => ({
-  contacts: [{ title: 'dummy', data: reduxStoreState }],
-});
+Contacts.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps)(Contacts);
+export default connect()(Contacts);
