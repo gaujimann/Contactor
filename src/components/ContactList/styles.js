@@ -6,6 +6,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     backgroundColor: 'rgb(100, 100, 100)',
     color: 'white',
-    padding: 16,
+    padding: 4,
+    paddingLeft: 16,
   },
 });
