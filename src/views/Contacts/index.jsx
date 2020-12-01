@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import ContactList from '../../components/ContactList';
+import Toolbar from '../../components/Toolbar';
 import dummy1 from '../../resources/dummy.json';
 import dummy2 from '../../resources/dummy2.json';
 
@@ -12,7 +13,12 @@ class Contacts extends React.Component {
 
   render() {
     const { contacts } = this.state;
-    return <ContactList contacts={contacts} />;
+    return (
+      <View style={{ flex: 1 }}>
+        <Toolbar />
+        <ContactList contacts={contacts} />
+      </View>
+    );
   }
 }
 

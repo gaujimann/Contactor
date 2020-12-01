@@ -5,9 +5,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-const ContactThumbnail = ({
-  id, name, photo, phoneNumber,
-}) => (
+const ContactThumbnail = ({ name, photo }) => (
   <TouchableOpacity activateOpacity={0.8}>
     <View style={styles.contact}>
       <Image style={styles.contactPhoto} source={{ uri: photo }} />
@@ -17,10 +15,8 @@ const ContactThumbnail = ({
 );
 
 ContactThumbnail.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
 };
 
 export default ContactThumbnail;
