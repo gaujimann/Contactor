@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ContactThumbnail from '../ContactThumbnail';
 import styles from './styles';
 
-const ContactList = ({ contacts }) => (
+const ContactList = ({ navigation, contacts }) => (
   <View style={{ flex: 1 }}>
     <SectionList
       sections={contacts}
@@ -15,7 +15,13 @@ const ContactList = ({ contacts }) => (
           id, name, photo, phoneNumber,
         },
       }) => (
-        <ContactThumbnail id={id} name={name} photo={photo} phoneNumber={phoneNumber} />
+        <ContactThumbnail
+          navigation={navigation}
+          id={id}
+          name={name}
+          photo={photo}
+          phoneNumber={phoneNumber}
+        />
       )}
       renderSectionHeader={({ section: { title } }) => <Text style={styles.title}>{title}</Text>}
     />
@@ -35,6 +41,9 @@ ContactList.propTypes = {
       ),
     }),
   ).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (reduxStoreState) => ({

@@ -8,6 +8,7 @@ import dummy2 from './src/resources/dummy2.json';
 
 const store = createStore(contactReducer, [dummy1, dummy2]);
 export default function App() {
+  console.log('THE STORE!!!!!!!!!!!!!!!!!!!', store);
   return (
     <Provider store={store}>
       <AppContainer />

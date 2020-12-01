@@ -6,12 +6,12 @@ import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
 
-const Contacts = ({ dispatch }) => {
+const Contacts = ({ navigation, dispatch }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <View style={{ flex: 1 }}>
       <Toolbar onAdd={() => setIsAddModalOpen(true)} />
-      <ContactList />
+      <ContactList navigation={navigation} />
       <AddModal
         isOpen={isAddModalOpen}
         closeModal={() => setIsAddModalOpen(false)}
@@ -31,6 +31,9 @@ const Contacts = ({ dispatch }) => {
 
 Contacts.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default connect()(Contacts);
