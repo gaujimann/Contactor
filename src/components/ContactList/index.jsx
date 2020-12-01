@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, SectionList } from 'react-native';
+import { connect } from 'react-redux';
 import ContactThumbnail from '../ContactThumbnail';
 import styles from './styles';
 
@@ -36,4 +37,10 @@ ContactList.propTypes = {
   ).isRequired,
 };
 
-export default ContactList;
+const mapStateToProps = (reduxStoreState) => {
+  return {
+    contact: reduxStoreState,
+  };
+};
+
+export default connect(mapStateToProps)(ContactList);
