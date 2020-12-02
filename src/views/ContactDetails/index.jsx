@@ -9,7 +9,6 @@ import EditModal from '../../components/EditModal';
 // set up PropTypes !!!
 const ContactDetails = ({ contact, dispatch }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  console.log('ContactDetatils DETAILS!!!!!!!!!!!!!!!!', contact);
   return (
     <View style={styles.container}>
       <Toolbar onPress={() => setIsEditModalOpen(true)} text="Edit" />
