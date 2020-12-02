@@ -6,7 +6,7 @@ import styles from './styles';
 const NameTextInput = ({ value, setValue, placeHolder }) => (
   <TextInput
     placeholder={placeHolder}
-    placeholderTextColor="grey"
+    placeholderTextColor="darkgray"
     style={styles.input}
     onChangeText={setValue}
     value={value}

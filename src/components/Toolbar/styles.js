@@ -12,8 +12,7 @@ export default StyleSheet.create({
     padding: 16,
   },
   toolbarPlus: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'blue',
+    fontSize: 30,
+    color: 'lightblue',
   },
 });
