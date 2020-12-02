@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { c4 as uuidv4 } from 'uuid';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
