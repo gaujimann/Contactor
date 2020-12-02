@@ -10,14 +10,8 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: 'red',
   },
   contactText: {
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: 'red',
     justifyContent: 'flex-start',
     fontSize: 16,
     fontWeight: 'bold',
