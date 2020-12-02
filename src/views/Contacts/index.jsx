@@ -10,7 +10,7 @@ const Contacts = ({ navigation, dispatch }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
     <View style={{ flex: 1 }}>
-      <Toolbar onAdd={() => setIsAddModalOpen(true)} />
+      <Toolbar onPress={() => setIsAddModalOpen(true)} icon="plus" />
       <ContactList navigation={navigation} />
       <AddModal
         isOpen={isAddModalOpen}
