@@ -4,19 +4,12 @@ const contactDirectory = `${FileSystem.documentDirectory}contacts`;
 
 const loadContact = async (fileName) => {
   const contact = await FileSystem.readAsStringAsync(`${contactDirectory}/${fileName}`);
-  console.log(contact);
   return JSON.parse(contact);
 };
 
 export const addContact = async (contact) => {
   const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
-  console.log('!!!!!!!', fileName);
-  try {
-    await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
-  } catch (e) {
-    console.log(e);
-  }
-  console.log('--------------------------------------------AFTER');
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
 const setupDirectory = async () => {
