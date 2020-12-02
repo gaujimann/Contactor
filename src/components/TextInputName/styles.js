@@ -11,4 +11,11 @@ export default StyleSheet.create({
     borderRadius: 8,
     padding: 8,
   },
+  view: {
+    flexDirection: 'row',
+  },
+  image: {
+    width: 20,
+    height: 20,
+  },
 });
