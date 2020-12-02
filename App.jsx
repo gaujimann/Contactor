@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import contactReducer from './src/reducers/contactReducer';
