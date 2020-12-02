@@ -70,6 +70,7 @@ const AddModal = ({ isOpen, closeModal, add }) => {
             add(name, photo, number);
             setPhoto('');
             setName('');
+            setNumber('');
             closeModal();
           }}
           style={[styles.button, styles.acceptView]}

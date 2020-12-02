@@ -7,6 +7,11 @@ const loadContact = async (fileName) => {
   return JSON.parse(contact);
 };
 
+export const addContact = async (contact) => {
+  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
+};
+
 export const editContact = async (oldContact, contact) => {
   const oldFileName = `${contactDirectory}/${oldContact.name}-${oldContact.id}.json`;
   const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
@@ -19,9 +24,9 @@ export const editContact = async (oldContact, contact) => {
   await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
-export const addContact = async (contact) => {
+export const deleteContact = async (contact) => {
   const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
-  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
+  await FileSystem.deleteAsync(fileName);
 };
 
 const setupDirectory = async () => {

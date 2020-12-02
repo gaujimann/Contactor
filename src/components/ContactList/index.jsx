@@ -46,7 +46,7 @@ ContactList.propTypes = {
     PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.number.isRequired,
+          id: PropTypes.string.isRequired,
           name: PropTypes.string.isRequired,
           photo: PropTypes.string.isRequired,
           phoneNumber: PropTypes.string.isRequired,
