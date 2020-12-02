@@ -60,4 +60,9 @@ export default StyleSheet.create({
     paddingLeft: 16,
     paddingBottom: 8,
   },
+  photo: {
+    width: 80,
+    height: 80,
+    borderRadius: 45,
+  },
 });

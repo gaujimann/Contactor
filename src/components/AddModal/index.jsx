@@ -40,14 +40,7 @@ const AddModal = ({ isOpen, closeModal, add }) => {
       <View style={styles.caption}>
         <Text style={styles.captionText}>Photo</Text>
       </View>
-      {photo !== '' ? (
-        <View>
-          <Image source={{ uri: photo }} />
-        </View>
-      ) : (
-        <></>
-      )}
-      {console.log(photo)}
+      {photo !== '' ? <Image source={{ uri: photo }} style={styles.photo} /> : <></>}
       <TouchableOpacity
         onPress={async () => {
           const p = await takePhoto();
