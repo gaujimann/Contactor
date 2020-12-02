@@ -2,24 +2,26 @@ import * as FileSystem from 'expo-file-system';
 
 const contactDirectory = `${FileSystem.documentDirectory}contacts`;
 
-export const copyFile = async (file, newLocation) => FileSystem.copyAsync({
-  from: file,
-  to: newLocation,
-});
+const loadContact = async (fileName) => {
+  const contact = await FileSystem.readAsStringAsync(`${contactDirectory}/${fileName}`);
+  return JSON.parse(contact);
+};
 
-const loadContact = async (fileName) => FileSystem.readAsStringAsync(`${contactDirectory}/${fileName}`, {
-  encoding: FileSystem.EncodingType.Base64,
-});
+export const editContact = async (oldContact, contact) => {
+  const oldFileName = `${contactDirectory}/${oldContact.name}-${oldContact.id}.json`;
+  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  console.log('filename: ', fileName);
+  console.log('Oldfilename', oldFileName);
+  await FileSystem.moveAsync({
+    from: oldFileName,
+    to: fileName,
+  });
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
+};
 
-export const addContact = async (contactLocation) => {
-  const folderSplit = contactLocation.split('/');
-  const fileName = folderSplit[folderSplit.length - 1];
-  await copyFile(contactLocation, `${contactLocation}/${fileName}`);
-
-  return {
-    name: fileName,
-    file: await loadContact(fileName),
-  };
+export const addContact = async (contact) => {
+  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
 const setupDirectory = async () => {
@@ -32,10 +34,5 @@ const setupDirectory = async () => {
 export const getAllContacts = async () => {
   await setupDirectory();
   const result = await FileSystem.readDirectoryAsync(contactDirectory);
-  return Promise.all(
-    result.map(async (fileName) => ({
-      name: fileName,
-      file: await loadContact(fileName),
-    })),
-  );
+  return Promise.all(result.map(async (fileName) => loadContact(fileName)));
 };

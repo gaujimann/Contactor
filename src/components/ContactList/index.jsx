@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ContactThumbnail from '../ContactThumbnail';
 import styles from './styles';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, navigation }) => {
   const renderSeparator = () => (
     <View
       style={{
@@ -26,7 +26,13 @@ const ContactList = ({ contacts }) => {
             id, name, photo, phoneNumber,
           },
         }) => (
-          <ContactThumbnail id={id} name={name} photo={photo} phoneNumber={phoneNumber} />
+          <ContactThumbnail
+            navigation={navigation}
+            id={id}
+            name={name}
+            photo={photo}
+            phoneNumber={phoneNumber}
+          />
         )}
         renderSectionHeader={({ section: { title } }) => <Text style={styles.title}>{title}</Text>}
         ItemSeparatorComponent={renderSeparator}
