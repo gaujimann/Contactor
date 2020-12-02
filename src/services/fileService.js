@@ -8,21 +8,15 @@ const loadContact = async (fileName) => {
 };
 
 export const editContact = async (oldContact, contact) => {
-  console.log('entering function');
-  try {
-    const oldFileName = `${contactDirectory}/${oldContact.name}-${oldContact.id}.json`;
-    const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
-    console.log('filename: ', fileName);
-    console.log('Oldfilename', oldFileName);
-    await FileSystem.moveAsync({
-      from: oldFileName,
-      to: fileName,
-    });
-    await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
-    console.log('doing stuff!!!!');
-  } catch (e) {
-    console.log('exception', e);
-  }
+  const oldFileName = `${contactDirectory}/${oldContact.name}-${oldContact.id}.json`;
+  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  console.log('filename: ', fileName);
+  console.log('Oldfilename', oldFileName);
+  await FileSystem.moveAsync({
+    from: oldFileName,
+    to: fileName,
+  });
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
 export const addContact = async (contact) => {
