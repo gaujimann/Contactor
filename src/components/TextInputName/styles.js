@@ -5,10 +5,10 @@ export default StyleSheet.create({
     height: 32,
     width: 300,
     color: 'white',
-    borderColor: 'white',
+    borderColor: 'gray',
     borderStyle: 'solid',
     borderWidth: 1,
-    borderRadius: 16,
+    borderRadius: 8,
     padding: 8,
   },
 });
