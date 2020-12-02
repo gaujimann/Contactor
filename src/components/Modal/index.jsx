@@ -9,21 +9,21 @@ import styles from './styles';
 const Modal = ({
   isOpen, closeModal, title, children,
 }) => (
-  <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-    <NativeModal
-      isVisible={isOpen}
-      hasbackdrop
-      onBackButtonpress={closeModal}
-      onSwipeComplete={closeModal}
-      swipeDirection={['up', 'down']}
-      style={styles.modal}
-    >
+  <NativeModal
+    isVisible={isOpen}
+    hasbackdrop
+    onBackButtonpress={closeModal}
+    onSwipeComplete={closeModal}
+    swipeDirection={['up', 'down']}
+    style={styles.modal}
+  >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.body}>
         <Text>{title}</Text>
         {children}
       </View>
-    </NativeModal>
-  </TouchableWithoutFeedback>
+    </TouchableWithoutFeedback>
+  </NativeModal>
 );
 
 Modal.propTypes = {

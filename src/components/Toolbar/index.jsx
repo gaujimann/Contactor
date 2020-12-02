@@ -13,7 +13,7 @@ const Toolbar = ({
     <View style={styles.toolbar}>
       {search ? (
         <TouchableOpacity style={styles.toolbarAction}>
-          <NameTextInput value={value} setValue={setValue} placeHolder={search} />
+          <NameTextInput value={value} setValue={setValue} placeHolder={search} search />
         </TouchableOpacity>
       ) : (
         <></>
@@ -32,12 +32,14 @@ const Toolbar = ({
 Toolbar.defaultProps = {
   icon: undefined,
   text: undefined,
+  search: false,
 };
 
 Toolbar.propTypes = {
   onPress: PropTypes.func.isRequired,
   icon: PropTypes.string,
   text: PropTypes.string,
+  search: PropTypes.bool,
 };
 
 export default Toolbar;

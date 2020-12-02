@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   input: {
     height: 32,
-    width: 300,
+    width: 240,
     color: 'white',
     borderColor: 'gray',
     borderStyle: 'solid',
@@ -14,8 +14,9 @@ export default StyleSheet.create({
   view: {
     flexDirection: 'row',
   },
-  image: {
-    width: 20,
-    height: 20,
+  icon: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 32,
   },
 });
