@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Entypo } from '@expo/vector-icons';
-import { TouchableOpacity, Text, View } from 'react-native';
+import {
+  TouchableOpacity, Text, View, Image,
+} from 'react-native';
 import Modal from '../Modal';
 import styles from './styles';
 import NameTextInput from '../TextInputName';
@@ -28,11 +30,24 @@ const AddModal = ({ isOpen, closeModal, add }) => {
         <NameTextInput value={name} setValue={setName} placeHolder="Enter Name" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.textInput}>
-        <NameTextInput value={number} setValue={setNumber} placeHolder="Enter Phone Number" />
+        <NameTextInput
+          value={number}
+          setValue={setNumber}
+          placeHolder="Enter Phone Number"
+          keyboardType="number-pad"
+        />
       </TouchableOpacity>
       <View style={styles.caption}>
-        <Text style={styles.captionText}> Photo</Text>
+        <Text style={styles.captionText}>Photo</Text>
       </View>
+      {photo !== '' ? (
+        <View>
+          <Image source={{ uri: photo }} />
+        </View>
+      ) : (
+        <></>
+      )}
+      {console.log(photo)}
       <TouchableOpacity
         onPress={async () => {
           const p = await takePhoto();

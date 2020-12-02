@@ -36,7 +36,12 @@ const EditModal = ({
         <NameTextInput value={name} setValue={setName} placeHolder="Enter Name" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.textInput}>
-        <NameTextInput value={number} setValue={setNumber} placeHolder="Enter Phone Number" />
+        <NameTextInput
+          value={number}
+          setValue={setNumber}
+          placeHolder="Enter Phone Number"
+          keyboardType="number-pad"
+        />
       </TouchableOpacity>
       <View style={styles.caption}>
         <Text style={styles.captionText}> Photo</Text>
