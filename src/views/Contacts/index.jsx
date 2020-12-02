@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { uuid } from 'react-native-uuid';
+import { c4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
@@ -19,7 +19,7 @@ const Contacts = ({ navigation, dispatch }) => {
         add={(name, photo, number) => dispatch({
           type: 'ADD',
           contact: {
-            id: uuid.v4(),
+            id: uuidv4(),
             name,
             photo,
             phoneNumber: number,
