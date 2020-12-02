@@ -1,13 +1,13 @@
 import React from 'react';
-import { TextInput, View, Image } from 'react-native';
+import { TextInput, View } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
 const NameTextInput = ({
-  value, setValue, placeHolder, keyboardType,
+  value, setValue, placeHolder, keyboardType, search,
 }) => (
   <View style={styles.view}>
-    <Image source={require('../../../assets/icon.png')} style={styles.image} />
     <TextInput
       placeholder={placeHolder}
       placeholderTextColor="darkgray"
@@ -16,6 +16,7 @@ const NameTextInput = ({
       value={value}
       keyboardType={keyboardType}
     />
+    {search ? <EvilIcons name="search" style={styles.icon} /> : <></>}
   </View>
 );
 

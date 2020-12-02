@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Entypo } from '@expo/vector-icons';
-import { TouchableOpacity, Text, View } from 'react-native';
+import {
+  TouchableOpacity, Text, View, Image,
+} from 'react-native';
 import Modal from '../Modal';
 import styles from './styles';
 import NameTextInput from '../TextInputName';
@@ -46,6 +48,7 @@ const EditModal = ({
       <View style={styles.caption}>
         <Text style={styles.captionText}> Photo</Text>
       </View>
+      <Image source={{ uri: photo }} style={styles.photo} />
       <TouchableOpacity
         onPress={async () => {
           const p = await takePhoto();
