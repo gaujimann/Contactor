@@ -7,22 +7,30 @@ import styles from './styles';
 import NameTextInput from '../TextInputName';
 import { takePhoto, selectFromCameraRoll } from '../../services/imageServices';
 
-const AddModal = ({ isOpen, closeModal, add }) => {
+const EditModal = ({
+  isOpen, closeModal, edit, currentName, currentPhoto, currentNumber,
+}) => {
   const [name, setName] = React.useState('');
   const [number, setNumber] = React.useState('');
   const [photo, setPhoto] = React.useState('');
 
+  // Set values to current contact data
+  React.useEffect(() => {
+    setName(currentName);
+  }, [currentName, setName]);
+
+  React.useEffect(() => {
+    setPhoto(currentPhoto);
+  }, [currentPhoto, setPhoto]);
+
+  React.useEffect(() => {
+    setNumber(currentNumber);
+  }, [currentNumber, setNumber]);
+
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
-      <View
-        style={{
-          borderStyle: 'solid',
-          borderBottomColor: '#000',
-          borderBottomWidth: 1,
-          paddingHorizontal: 10,
-        }}
-      >
-        <Text style={styles.captionText}>Add Contact</Text>
+      <View>
+        <Text style={styles.captionText}>Edit Contact</Text>
       </View>
       <TouchableOpacity style={styles.textInput}>
         <NameTextInput value={name} setValue={setName} placeHolder="Enter Name" />
@@ -52,12 +60,11 @@ const AddModal = ({ isOpen, closeModal, add }) => {
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {
-            add(name, photo, number);
-            setPhoto('');
-            setName('');
+            edit(name, photo, number);
             closeModal();
           }}
           style={[styles.button, styles.acceptView]}
+          // disable if any input field is empty
           disabled={photo === '' || name === '' || number === ''}
         >
           <Text
@@ -73,9 +80,9 @@ const AddModal = ({ isOpen, closeModal, add }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            setName('');
-            setPhoto('');
-            closeModal();
+            setName(currentName);
+            setPhoto(currentPhoto);
+            closeModal(currentNumber);
           }}
           style={styles.button}
         >
@@ -86,10 +93,13 @@ const AddModal = ({ isOpen, closeModal, add }) => {
   );
 };
 
-AddModal.propTypes = {
+EditModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-  add: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  currentName: PropTypes.string.isRequired,
+  currentPhoto: PropTypes.string.isRequired,
+  currentNumber: PropTypes.string.isRequired,
 };
 
-export default AddModal;
+export default EditModal;
