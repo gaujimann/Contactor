@@ -43,6 +43,7 @@ const EditModal = ({
           setValue={setNumber}
           placeHolder="Enter Phone Number"
           keyboardType="number-pad"
+          maxLength={7}
         />
       </TouchableOpacity>
       <View style={styles.caption}>

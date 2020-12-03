@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const NameTextInput = ({
-  value, setValue, placeHolder, keyboardType, search,
+  value, setValue, placeHolder, keyboardType, search, maxLength,
 }) => (
   <View style={styles.view}>
     <TextInput
@@ -15,6 +15,7 @@ const NameTextInput = ({
       onChangeText={setValue}
       value={value}
       keyboardType={keyboardType}
+      maxLength={maxLength}
     />
     {search ? <EvilIcons name="search" style={styles.icon} /> : <></>}
   </View>
@@ -25,6 +26,7 @@ NameTextInput.defaultProps = {
   keyboardType: 'default',
   search: undefined,
   value: undefined,
+  maxLength: 50,
 };
 
 NameTextInput.propTypes = {
@@ -33,6 +35,7 @@ NameTextInput.propTypes = {
   search: PropTypes.string,
   placeHolder: PropTypes.string,
   keyboardType: PropTypes.string,
+  maxLength: PropTypes.number,
 };
 
 export default NameTextInput;

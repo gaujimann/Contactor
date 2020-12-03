@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {
-  View, Text, Image, Button,
+  View, Text, Image, Button, TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+import call from 'react-native-phone-call';
 import Toolbar from '../../components/Toolbar';
 import styles from './styles';
 import EditModal from '../../components/EditModal';
@@ -15,12 +16,29 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
   return (
     <View style={styles.container}>
       <Toolbar onPress={() => setIsEditModalOpen(true)} text="Edit" />
-      <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
-      <Text style={styles.contactText}>{contact?.name}</Text>
-      <Text style={styles.contactText}>
-        {contact?.phoneNumber}
-        <SimpleLineIcons name="phone" />
-      </Text>
+      <View style={styles.imageContainer}>
+        <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
+      </View>
+      <View style={styles.infoContainer}>
+        <View style={styles.textContainer}>
+          <Text style={{ color: 'rgb(155, 155, 155)' }}>Name</Text>
+          <Text style={styles.contactText}>{contact?.name}</Text>
+        </View>
+        <View style={[styles.textContainer, { borderBottomWidth: 0 }]}>
+          <Text style={{ color: 'rgb(155, 155, 155)' }}>Phone Number</Text>
+          <TouchableOpacity
+            onPress={() => call({
+              number: contact.phoneNumber,
+              prompt: false,
+            }).catch(console.error)}
+          >
+            <Text style={styles.contactText}>
+              {contact?.phoneNumber}
+              <SimpleLineIcons name="phone" />
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
       <EditModal
         isOpen={isEditModalOpen}
         closeModal={() => {

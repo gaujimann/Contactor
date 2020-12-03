@@ -12,7 +12,11 @@ export default StyleSheet.create({
     padding: 16,
   },
   toolbarPlus: {
-    fontSize: 30,
-    color: 'lightblue',
+    fontSize: 32,
+    color: 'rgb(10, 132, 255)',
+  },
+  toolbarText: {
+    fontSize: 20,
+    color: 'rgb(10, 132, 255)',
   },
 });

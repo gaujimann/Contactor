@@ -21,11 +21,12 @@ const Toolbar = ({
     ) : (
       <></>
     )}
+
     <TouchableOpacity activateOpacity={0.8} style={styles.toolbarAction} onPress={onPress}>
       {icon ? (
         <AntDesign name={icon} style={styles.toolbarPlus} />
       ) : (
-        <Text style={styles.toolbarPlus}>{text}</Text>
+        <Text style={styles.toolbarText}>{text}</Text>
       )}
     </TouchableOpacity>
   </View>
