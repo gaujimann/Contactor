@@ -22,12 +22,15 @@ const NameTextInput = ({
 
 NameTextInput.defaultProps = {
   placeHolder: '',
-  keyboardType: '',
+  keyboardType: 'default',
+  search: undefined,
+  value: undefined,
 };
 
 NameTextInput.propTypes = {
-  value: PropTypes.string.isRequired,
   setValue: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  search: PropTypes.string,
   placeHolder: PropTypes.string,
   keyboardType: PropTypes.string,
 };
