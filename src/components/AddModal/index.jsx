@@ -27,7 +27,11 @@ const AddModal = ({ isOpen, closeModal, add }) => {
         <Text style={styles.captionText}>Add Contact</Text>
       </View>
       <TouchableOpacity style={styles.textInput}>
-        <NameTextInput value={name} setValue={setName} placeHolder="Enter Name" />
+        <NameTextInput
+          value={name}
+          setValue={setName}
+          placeHolder="Enter Name"
+        />
       </TouchableOpacity>
       <TouchableOpacity style={styles.textInput}>
         <NameTextInput
@@ -41,7 +45,11 @@ const AddModal = ({ isOpen, closeModal, add }) => {
       <View style={styles.caption}>
         <Text style={styles.captionText}>Photo</Text>
       </View>
-      {photo !== '' ? <Image source={{ uri: photo }} style={styles.photo} /> : <></>}
+      {photo !== '' ? (
+        <Image source={{ uri: photo }} style={styles.photo} />
+      ) : (
+        <></>
+      )}
       <TouchableOpacity
         onPress={async () => {
           const p = await takePhoto();
@@ -68,12 +76,12 @@ const AddModal = ({ isOpen, closeModal, add }) => {
             closeModal();
           }}
           style={[styles.button, styles.acceptView]}
-          disabled={photo === '' || name === '' || number === ''}
+          disabled={photo === '' || name === '' || number.length < 7}
         >
           <Text
             style={[
               styles.textAccept,
-              !(photo === '' || name === '' || number === '')
+              !(photo === '' || name === '' || number.length < 7)
                 ? {}
                 : { color: 'rgba(155, 155, 155, 0.5)' },
             ]}

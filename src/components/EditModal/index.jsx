@@ -10,7 +10,12 @@ import NameTextInput from '../TextInputName';
 import { takePhoto, selectFromCameraRoll } from '../../services/imageServices';
 
 const EditModal = ({
-  isOpen, closeModal, edit, currentName, currentPhoto, currentNumber,
+  isOpen,
+  closeModal,
+  edit,
+  currentName,
+  currentPhoto,
+  currentNumber,
 }) => {
   const [name, setName] = React.useState('');
   const [number, setNumber] = React.useState('');
@@ -35,7 +40,11 @@ const EditModal = ({
         <Text style={styles.captionText}>Edit Contact</Text>
       </View>
       <TouchableOpacity style={styles.textInput}>
-        <NameTextInput value={name} setValue={setName} placeHolder="Enter Name" />
+        <NameTextInput
+          value={name}
+          setValue={setName}
+          placeHolder="Enter Name"
+        />
       </TouchableOpacity>
       <TouchableOpacity style={styles.textInput}>
         <NameTextInput
@@ -74,12 +83,12 @@ const EditModal = ({
           }}
           style={[styles.button, styles.acceptView]}
           // disable if any input field is empty
-          disabled={photo === '' || name === '' || number === ''}
+          disabled={photo === '' || name === '' || number.length < 7}
         >
           <Text
             style={[
               styles.textAccept,
-              !(photo === '' || name === '' || number === '')
+              !(photo === '' || name === '' || number.length < 7)
                 ? {}
                 : { color: 'rgba(155, 155, 155, 0.5)' },
             ]}
