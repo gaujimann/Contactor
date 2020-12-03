@@ -3,6 +3,7 @@ import {
   View, Text, Image, Button,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import Toolbar from '../../components/Toolbar';
 import styles from './styles';
@@ -16,7 +17,10 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
       <Toolbar onPress={() => setIsEditModalOpen(true)} text="Edit" />
       <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
       <Text style={styles.contactText}>{contact?.name}</Text>
-      <Text style={styles.contactText}>{contact?.phoneNumber}</Text>
+      <Text style={styles.contactText}>
+        {contact?.phoneNumber}
+        <SimpleLineIcons name="phone" />
+      </Text>
       <EditModal
         isOpen={isEditModalOpen}
         closeModal={() => {
