@@ -10,10 +10,18 @@ import AddModal from '../../components/AddModal';
 
 const Contacts = ({ navigation, dispatch }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [searchString, setSearchString] = useState('');
   return (
     <View style={{ flex: 1 }}>
-      <Toolbar onPress={() => setIsAddModalOpen(true)} icon="plus" search="Search" />
-      <ContactList navigation={navigation} />
+      <Toolbar
+        onPress={() => setIsAddModalOpen(true)}
+        icon="plus"
+        search="Search"
+        navigation={navigation}
+        searchString={searchString}
+        setSearchString={setSearchString}
+      />
+      <ContactList navigation={navigation} searchString={searchString} />
       <AddModal
         isOpen={isAddModalOpen}
         closeModal={() => setIsAddModalOpen(false)}

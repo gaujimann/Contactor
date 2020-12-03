@@ -6,40 +6,46 @@ import NameTextInput from '../TextInputName';
 import styles from './styles';
 
 const Toolbar = ({
-  onPress, icon, text, search,
-}) => {
-  const [value, setValue] = React.useState('');
-  return (
-    <View style={styles.toolbar}>
-      {search ? (
-        <TouchableOpacity style={styles.toolbarAction}>
-          <NameTextInput value={value} setValue={setValue} placeHolder={search} search />
-        </TouchableOpacity>
-      ) : (
-        <></>
-      )}
-      <TouchableOpacity activateOpacity={0.8} style={styles.toolbarAction} onPress={onPress}>
-        {icon ? (
-          <AntDesign name={icon} style={styles.toolbarPlus} />
-        ) : (
-          <Text style={styles.toolbarPlus}>{text}</Text>
-        )}
+  onPress, icon, text, search, searchString, setSearchString,
+}) => (
+  <View style={styles.toolbar}>
+    {search ? (
+      <TouchableOpacity style={styles.toolbarAction}>
+        <NameTextInput
+          value={searchString}
+          setValue={setSearchString}
+          placeHolder={search}
+          search={search}
+        />
       </TouchableOpacity>
-    </View>
-  );
-};
+    ) : (
+      <></>
+    )}
+    <TouchableOpacity activateOpacity={0.8} style={styles.toolbarAction} onPress={onPress}>
+      {icon ? (
+        <AntDesign name={icon} style={styles.toolbarPlus} />
+      ) : (
+        <Text style={styles.toolbarPlus}>{text}</Text>
+      )}
+    </TouchableOpacity>
+  </View>
+);
 
 Toolbar.defaultProps = {
   icon: undefined,
   text: undefined,
-  search: false,
+  search: undefined,
+  searchString: undefined,
+  setSearchString: undefined,
 };
 
 Toolbar.propTypes = {
   onPress: PropTypes.func.isRequired,
   icon: PropTypes.string,
   text: PropTypes.string,
-  search: PropTypes.bool,
+  search: PropTypes.string,
+  searchString: PropTypes.string,
+  setSearchString: PropTypes.func,
 };
 
 export default Toolbar;
