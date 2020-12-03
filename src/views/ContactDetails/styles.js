@@ -21,7 +21,6 @@ export default StyleSheet.create({
   },
   contactText: {
     fontSize: 24,
-    fontWeight: 'bold',
     paddingTop: 8,
     paddingBottom: 16,
     color: 'white',
@@ -37,5 +36,17 @@ export default StyleSheet.create({
     borderTopWidth: 1,
     marginTop: 40,
     marginBottom: 16,
+  },
+  icon: {
+    fontSize: 24,
+    paddingTop: 8,
+    paddingBottom: 16,
+    paddingRight: 8,
+    color: 'rgb(10, 132, 255)',
+  },
+  numberContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

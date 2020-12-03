@@ -32,10 +32,19 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
               prompt: false,
             }).catch(console.error)}
           >
-            <Text style={styles.contactText}>
-              {contact?.phoneNumber}
-              <SimpleLineIcons name="phone" />
-            </Text>
+            <View style={styles.numberContainer}>
+              <Text
+                style={[
+                  styles.contactText,
+                  { fontStyle: 'italic', color: 'rgb(10, 132, 255)' },
+                ]}
+              >
+                {contact?.phoneNumber.substring(0, 3)}
+                {' '}
+                {contact?.phoneNumber.substring(3, 7)}
+              </Text>
+              <SimpleLineIcons name="phone" style={styles.icon} />
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -73,8 +82,14 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
 
 const mapStateToProps = (reduxStoreState, ownProps) => ({
   // getting contacct by contactId
-  contact: reduxStoreState.find((contact) => contact.id === ownProps.navigation.state.params.id),
+  contact: reduxStoreState.find(
+    (contact) => contact.id === ownProps.navigation.state.params.id,
+  ),
 });
+
+ContactDetails.defaultProps = {
+  contact: undefined,
+};
 
 ContactDetails.propTypes = {
   contact: PropTypes.shape({
@@ -82,7 +97,7 @@ ContactDetails.propTypes = {
     name: PropTypes.string.isRequired,
     phoneNumber: PropTypes.string.isRequired,
     photo: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
