@@ -20,6 +20,7 @@ const ContactThumbnail = ({
 );
 
 ContactThumbnail.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
