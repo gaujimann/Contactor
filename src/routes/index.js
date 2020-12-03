@@ -17,8 +17,8 @@ const StackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerTintColor: 'white',
-      headerStyle: { backgroundColor: 'rgb(25, 25, 25)' },
-      cardStyle: { backgroundColor: 'black' },
+      headerStyle: { backgroundColor: 'rgb(30, 30, 30)' },
+      cardStyle: { backgroundColor: 'rgb(20, 20, 20)' },
     },
   },
 );

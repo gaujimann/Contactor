@@ -1,4 +1,5 @@
 import * as FileSystem from 'expo-file-system';
+import latinize from 'latinize';
 
 const contactDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -8,15 +9,19 @@ const loadContact = async (fileName) => {
 };
 
 export const addContact = async (contact) => {
-  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
+    contact.id
+  }.json`;
   await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
 export const editContact = async (oldContact, contact) => {
-  const oldFileName = `${contactDirectory}/${oldContact.name}-${oldContact.id}.json`;
-  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
-  console.log('filename: ', fileName);
-  console.log('Oldfilename', oldFileName);
+  const oldFileName = `${contactDirectory}/${latinize(oldContact.name.replace(' ', '='))}-${
+    oldContact.id
+  }.json`;
+  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
+    contact.id
+  }.json`;
   await FileSystem.moveAsync({
     from: oldFileName,
     to: fileName,
@@ -25,7 +30,9 @@ export const editContact = async (oldContact, contact) => {
 };
 
 export const deleteContact = async (contact) => {
-  const fileName = `${contactDirectory}/${contact.name}-${contact.id}.json`;
+  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
+    contact.id
+  }.json`;
   await FileSystem.deleteAsync(fileName);
 };
 
