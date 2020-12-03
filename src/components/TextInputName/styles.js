@@ -15,8 +15,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
-    color: 'white',
+    color: 'darkgray',
     fontWeight: 'bold',
     fontSize: 32,
+    position: 'absolute',
+    left: 2,
+    top: 2,
   },
 });

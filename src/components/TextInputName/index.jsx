@@ -11,7 +11,7 @@ const NameTextInput = ({
     <TextInput
       placeholder={placeHolder}
       placeholderTextColor="darkgray"
-      style={styles.input}
+      style={[styles.input, search ? { paddingLeft: 32 } : {}]}
       onChangeText={setValue}
       value={value}
       keyboardType={keyboardType}
