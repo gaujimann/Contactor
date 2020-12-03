@@ -22,7 +22,7 @@ const Toolbar = ({
         {icon ? (
           <AntDesign name={icon} style={styles.toolbarPlus} />
         ) : (
-          <Text style={styles.toolbarPlus}>{text}</Text>
+          <Text style={styles.toolbarText}>{text}</Text>
         )}
       </TouchableOpacity>
     </View>

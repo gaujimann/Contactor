@@ -14,9 +14,19 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
   return (
     <View style={styles.container}>
       <Toolbar onPress={() => setIsEditModalOpen(true)} text="Edit" />
-      <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
-      <Text style={styles.contactText}>{contact?.name}</Text>
-      <Text style={styles.contactText}>{contact?.phoneNumber}</Text>
+      <View style={styles.imageContainer}>
+        <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
+      </View>
+      <View style={styles.infoContainer}>
+        <View style={styles.textContainer}>
+          <Text style={{ color: 'rgb(155, 155, 155)' }}>Name</Text>
+          <Text style={styles.contactText}>{contact?.name}</Text>
+        </View>
+        <View style={[styles.textContainer, { borderBottomWidth: 0 }]}>
+          <Text style={{ color: 'rgb(155, 155, 155)' }}>Phone Number</Text>
+          <Text style={styles.contactText}>{contact?.phoneNumber}</Text>
+        </View>
+      </View>
       <EditModal
         isOpen={isEditModalOpen}
         closeModal={() => {
