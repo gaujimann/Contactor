@@ -73,22 +73,26 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
       <Button
         title="Delete"
         onPress={() => {
-          Alert.alert('Alert Title', 'Alert message here...', [
-            {
-              text: 'YES',
-              onPress: () => {
-                dispatch({
-                  type: 'DELETE',
-                  contact,
-                });
-                navigation.navigate('Contacts');
+          Alert.alert(
+            `Delete ${contact.name}`,
+            'Are you sure you want to delete this contact?',
+            [
+              {
+                text: 'YES',
+                onPress: () => {
+                  dispatch({
+                    type: 'DELETE',
+                    contact,
+                  });
+                  navigation.navigate('Contacts');
+                },
               },
-            },
-            {
-              text: 'NO',
-              style: 'cancel',
-            },
-          ]);
+              {
+                text: 'NO',
+                style: 'destructive',
+              },
+            ],
+          );
         }}
       />
     </View>
