@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import {
-  View, Text, Image, Button, TouchableOpacity,
+  View,
+  Text,
+  Image,
+  Button,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -10,7 +15,6 @@ import Toolbar from '../../components/Toolbar';
 import styles from './styles';
 import EditModal from '../../components/EditModal';
 
-// set up PropTypes !!!
 const ContactDetails = ({ contact, dispatch, navigation }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   return (
@@ -60,11 +64,22 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
       <Button
         title="Delete"
         onPress={() => {
-          dispatch({
-            type: 'DELETE',
-            contact,
-          });
-          navigation.navigate('Contacts');
+          Alert.alert('Alert Title', 'Alert message here...', [
+            {
+              text: 'YES',
+              onPress: () => {
+                dispatch({
+                  type: 'DELETE',
+                  contact,
+                });
+                navigation.navigate('Contacts');
+              },
+            },
+            {
+              text: 'NO',
+              style: 'cancel',
+            },
+          ]);
         }}
       />
     </View>
@@ -72,8 +87,9 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
 };
 
 const mapStateToProps = (reduxStoreState, ownProps) => ({
-  // getting contacct by contactId
-  contact: reduxStoreState.find((contact) => contact.id === ownProps.navigation.state.params.id),
+  contact: reduxStoreState.find(
+    (contact) => contact.id === ownProps.navigation.state.params.id,
+  ),
 });
 
 ContactDetails.propTypes = {

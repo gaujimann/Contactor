@@ -41,17 +41,12 @@ const ContactList = ({ rawContacts, navigation, searchString }) => {
       <SectionList
         sections={matchingContacts}
         keyExtractor={(item, index) => item + index}
-        renderItem={({
-          item: {
-            id, name, photo, phoneNumber,
-          },
-        }) => (
+        renderItem={({ item: { id, name, photo } }) => (
           <ContactThumbnail
             navigation={navigation}
             id={id}
             name={name}
             photo={photo}
-            phoneNumber={phoneNumber}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (
