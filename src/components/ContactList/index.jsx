@@ -54,7 +54,9 @@ const ContactList = ({ rawContacts, navigation, searchString }) => {
             phoneNumber={phoneNumber}
           />
         )}
-        renderSectionHeader={({ section: { title } }) => <Text style={styles.title}>{title}</Text>}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.title}>{title}</Text>
+        )}
         ItemSeparatorComponent={renderSeparator}
       />
     </View>

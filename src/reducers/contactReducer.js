@@ -1,4 +1,8 @@
-import { addContact, editContact, deleteContact } from '../services/fileService';
+import {
+  addContact,
+  editContact,
+  deleteContact,
+} from '../services/fileService';
 
 export default function contactReducer(state, action) {
   switch (action.type) {
