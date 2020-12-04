@@ -24,9 +24,11 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
         {contact?.photo !== '' ? (
           <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
         ) : (
-          <Text style={{ color: 'white', fontSize: 100 }}>
-            {contact?.name[0]}
-          </Text>
+          <View style={styles.imageAlt}>
+            <Text style={{ color: 'white', fontSize: 100 }}>
+              {contact?.name[0]}
+            </Text>
+          </View>
         )}
       </View>
       <View style={styles.infoContainer}>
