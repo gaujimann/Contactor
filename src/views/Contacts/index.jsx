@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
+import { getContacts } from '../../services/contactServices';
 
 const Contacts = ({ navigation, dispatch }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -34,6 +35,24 @@ const Contacts = ({ navigation, dispatch }) => {
             phoneNumber: number,
           },
         })}
+      />
+      <Button
+        title="Import Contacts"
+        onPress={async () => {
+          const deviceContacts = await getContacts();
+          deviceContacts.map((contact) => {
+            dispatch({
+              type: 'ADD',
+              contact: {
+                id: contact.id,
+                name: contact.name,
+                photo: contact.rawImage.uri,
+                phoneNumber: contact.phoneNumbers[0].number.replace(/\s/g, ''),
+              },
+            });
+            return contact;
+          });
+        }}
       />
     </View>
   );
