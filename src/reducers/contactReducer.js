@@ -4,6 +4,13 @@ import {
   deleteContact,
 } from '../services/fileService';
 
+const addOrUpdate = (state, action) => ({
+  type: state.find((contact) => contact.id === action.contact.id)
+    ? 'EDIT'
+    : 'ADD',
+  contact: action.contact,
+});
+
 export default function contactReducer(state, action) {
   switch (action.type) {
     case 'ADD':
@@ -18,6 +25,8 @@ export default function contactReducer(state, action) {
     case 'DELETE':
       deleteContact(action.contact);
       return state.filter((contact) => contact.id !== action.contact.id);
+    case 'ADD_OR_UPDATE':
+      return contactReducer(state, addOrUpdate(state, action));
     default:
       return state;
   }

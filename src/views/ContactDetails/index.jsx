@@ -31,6 +31,7 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
         <View style={[styles.textContainer, { borderBottomWidth: 0 }]}>
           <Text style={{ color: 'rgb(155, 155, 155)' }}>Phone Number</Text>
           <TouchableOpacity
+            disabled={contact?.phoneNumber.length === 0}
             onPress={() => call({
               number: contact.phoneNumber,
               prompt: false,
@@ -120,6 +121,5 @@ ContactDetails.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
-  phonNumber: PropTypes.string,
 };
 export default connect(mapStateToProps)(ContactDetails);

@@ -41,13 +41,17 @@ const Contacts = ({ navigation, dispatch }) => {
         onPress={async () => {
           const deviceContacts = await getContacts();
           deviceContacts.map((contact) => {
+            console.log('number of phone numbers', contact.phoneNumbers);
             dispatch({
-              type: 'ADD',
+              type: 'ADD_OR_UPDATE',
               contact: {
                 id: contact.id,
                 name: contact.name,
-                photo: contact.rawImage.uri,
-                phoneNumber: contact.phoneNumbers[0].number.replace(/\s/g, ''),
+                photo: contact.rawImage ? contact.rawImage.uri : '',
+                phoneNumber:
+                  contact.phoneNumbers !== undefined
+                    ? contact.phoneNumbers[0].number.replace(/\s/g, '')
+                    : '',
               },
             });
             return contact;
