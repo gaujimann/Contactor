@@ -16,7 +16,9 @@ const ContactThumbnail = ({
       {photo !== '' ? (
         <Image style={styles.contactPhoto} source={{ uri: photo }} />
       ) : (
-        <></>
+        <View style={styles.imageAlt}>
+          <Text style={{ color: 'white', fontSize: 24 }}>{name[0]}</Text>
+        </View>
       )}
       <Text style={styles.contactText}>{name}</Text>
     </View>

@@ -20,4 +20,12 @@ export default StyleSheet.create({
     padding: 16,
     color: 'white',
   },
+  imageAlt: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    backgroundColor: 'rgb(155, 155, 155)',
+  },
 });
