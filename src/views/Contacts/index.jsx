@@ -36,28 +36,29 @@ const Contacts = ({ navigation, dispatch }) => {
           },
         })}
       />
-      <Button
-        title="Import Contacts"
-        onPress={async () => {
-          const deviceContacts = await getContacts();
-          deviceContacts.map((contact) => {
-            console.log('number of phone numbers', contact.phoneNumbers);
-            dispatch({
-              type: 'ADD_OR_UPDATE',
-              contact: {
-                id: contact.id,
-                name: contact.name,
-                photo: contact.rawImage ? contact.rawImage.uri : '',
-                phoneNumber:
-                  contact.phoneNumbers !== undefined
-                    ? contact.phoneNumbers[0].number.replace(/\s/g, '')
-                    : '',
-              },
+      <View style={{ padding: 24 }}>
+        <Button
+          title="Import Contacts"
+          onPress={async () => {
+            const deviceContacts = await getContacts();
+            deviceContacts.map((contact) => {
+              dispatch({
+                type: 'ADD_OR_UPDATE',
+                contact: {
+                  id: contact.id,
+                  name: contact.name,
+                  photo: contact.rawImage ? contact.rawImage.uri : '',
+                  phoneNumber:
+                    contact.phoneNumbers !== undefined
+                      ? contact.phoneNumbers[0].number.replace(/\s/g, '')
+                      : '',
+                },
+              });
+              return contact;
             });
-            return contact;
-          });
-        }}
-      />
+          }}
+        />
+      </View>
     </View>
   );
 };

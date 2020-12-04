@@ -13,7 +13,11 @@ const ContactThumbnail = ({
     onPress={() => navigation.navigate('ContactDetails', { id, name })}
   >
     <View style={styles.contact}>
-      <Image style={styles.contactPhoto} source={{ uri: photo }} />
+      {photo !== '' ? (
+        <Image style={styles.contactPhoto} source={{ uri: photo }} />
+      ) : (
+        <></>
+      )}
       <Text style={styles.contactText}>{name}</Text>
     </View>
   </TouchableOpacity>

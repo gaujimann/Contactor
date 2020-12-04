@@ -21,7 +21,13 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
     <View style={styles.container}>
       <Toolbar onPress={() => setIsEditModalOpen(true)} text="Edit" />
       <View style={styles.imageContainer}>
-        <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
+        {contact?.photo !== '' ? (
+          <Image style={styles.contactPhoto} source={{ uri: contact?.photo }} />
+        ) : (
+          <Text style={{ color: 'white', fontSize: 100 }}>
+            {contact?.name[0]}
+          </Text>
+        )}
       </View>
       <View style={styles.infoContainer}>
         <View style={styles.textContainer}>
