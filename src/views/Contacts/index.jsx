@@ -57,10 +57,9 @@ const Contacts = ({ navigation, dispatch }) => {
                           photo: contact.rawImage ? contact.rawImage.uri : '',
                           phoneNumber:
                             contact.phoneNumbers !== undefined
-                              ? contact.phoneNumbers[0].number.replace(
-                                /\s/g,
-                                '',
-                              )
+                              ? contact.phoneNumbers[0].number
+                                .replace(/\s/g, '')
+                                .slice(-7)
                               : '',
                         },
                       });
