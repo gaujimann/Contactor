@@ -85,7 +85,7 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
             'Are you sure you want to delete this contact?',
             [
               {
-                text: 'YES',
+                text: 'Delete',
                 onPress: () => {
                   dispatch({
                     type: 'DELETE',
@@ -95,7 +95,7 @@ const ContactDetails = ({ contact, dispatch, navigation }) => {
                 },
               },
               {
-                text: 'NO',
+                text: 'Cancel',
                 style: 'destructive',
               },
             ],

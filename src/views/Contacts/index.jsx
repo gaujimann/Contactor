@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -39,23 +39,41 @@ const Contacts = ({ navigation, dispatch }) => {
       <View style={{ padding: 24 }}>
         <Button
           title="Import Contacts"
-          onPress={async () => {
-            const deviceContacts = await getContacts();
-            deviceContacts.map((contact) => {
-              dispatch({
-                type: 'ADD_OR_UPDATE',
-                contact: {
-                  id: contact.id,
-                  name: contact.name,
-                  photo: contact.rawImage ? contact.rawImage.uri : '',
-                  phoneNumber:
-                    contact.phoneNumbers !== undefined
-                      ? contact.phoneNumbers[0].number.replace(/\s/g, '')
-                      : '',
+          onPress={() => {
+            Alert.alert(
+              'Import Contacts',
+              'Continuing will import all your existing contacts to Contactor',
+              [
+                {
+                  text: 'Continue',
+                  onPress: async () => {
+                    const deviceContacts = await getContacts();
+                    deviceContacts.map((contact) => {
+                      dispatch({
+                        type: 'ADD_OR_UPDATE',
+                        contact: {
+                          id: contact.id,
+                          name: contact.name,
+                          photo: contact.rawImage ? contact.rawImage.uri : '',
+                          phoneNumber:
+                            contact.phoneNumbers !== undefined
+                              ? contact.phoneNumbers[0].number.replace(
+                                /\s/g,
+                                '',
+                              )
+                              : '',
+                        },
+                      });
+                      return contact;
+                    });
+                  },
                 },
-              });
-              return contact;
-            });
+                {
+                  text: 'Cancel',
+                  style: 'destructive',
+                },
+              ],
+            );
           }}
         />
       </View>
