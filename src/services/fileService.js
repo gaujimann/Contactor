@@ -4,24 +4,26 @@ import latinize from 'latinize';
 const contactDirectory = `${FileSystem.documentDirectory}contacts`;
 
 const loadContact = async (fileName) => {
-  const contact = await FileSystem.readAsStringAsync(`${contactDirectory}/${fileName}`);
+  const contact = await FileSystem.readAsStringAsync(
+    `${contactDirectory}/${fileName}`,
+  );
   return JSON.parse(contact);
 };
 
 export const addContact = async (contact) => {
-  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
-    contact.id
-  }.json`;
+  const fileName = `${contactDirectory}/${latinize(
+    contact.name.replace(' ', '='),
+  )}-${contact.id}.json`;
   await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
 };
 
 export const editContact = async (oldContact, contact) => {
-  const oldFileName = `${contactDirectory}/${latinize(oldContact.name.replace(' ', '='))}-${
-    oldContact.id
-  }.json`;
-  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
-    contact.id
-  }.json`;
+  const oldFileName = `${contactDirectory}/${latinize(
+    oldContact.name.replace(' ', '='),
+  )}-${oldContact.id}.json`;
+  const fileName = `${contactDirectory}/${latinize(
+    contact.name.replace(' ', '='),
+  )}-${contact.id}.json`;
   await FileSystem.moveAsync({
     from: oldFileName,
     to: fileName,
@@ -30,9 +32,9 @@ export const editContact = async (oldContact, contact) => {
 };
 
 export const deleteContact = async (contact) => {
-  const fileName = `${contactDirectory}/${latinize(contact.name.replace(' ', '='))}-${
-    contact.id
-  }.json`;
+  const fileName = `${contactDirectory}/${latinize(
+    contact.name.replace(' ', '='),
+  )}-${contact.id}.json`;
   await FileSystem.deleteAsync(fileName);
 };
 
