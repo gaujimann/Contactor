@@ -93,7 +93,7 @@ const EditModal = ({
                 : { color: 'rgba(155, 155, 155, 0.5)' },
             ]}
           >
-            OK
+            Save
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -111,13 +111,18 @@ const EditModal = ({
   );
 };
 
+EditModal.defaultProps = {
+  currentName: '',
+  currentPhoto: '',
+  currentNumber: '',
+};
 EditModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   edit: PropTypes.func.isRequired,
-  currentName: PropTypes.string.isRequired,
-  currentPhoto: PropTypes.string.isRequired,
-  currentNumber: PropTypes.string.isRequired,
+  currentName: PropTypes.string,
+  currentPhoto: PropTypes.string,
+  currentNumber: PropTypes.string,
 };
 
 export default EditModal;

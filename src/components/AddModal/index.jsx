@@ -86,7 +86,7 @@ const AddModal = ({ isOpen, closeModal, add }) => {
                 : { color: 'rgba(155, 155, 155, 0.5)' },
             ]}
           >
-            OK
+            Save
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

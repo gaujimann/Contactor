@@ -120,5 +120,6 @@ ContactDetails.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
+  phonNumber: PropTypes.string,
 };
 export default connect(mapStateToProps)(ContactDetails);
