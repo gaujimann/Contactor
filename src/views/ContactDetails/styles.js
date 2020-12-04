@@ -1,7 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-const { width: winWidth } = Dimensions.get('window');
-
 export default StyleSheet.create({
   contactPhoto: {
     marginTop: 24,
@@ -12,9 +10,12 @@ export default StyleSheet.create({
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageAlt: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 200,
     height: 200,
-    marginLeft: winWidth - 300,
     backgroundColor: 'rgb(155, 155, 155)',
     borderRadius: 100,
   },
